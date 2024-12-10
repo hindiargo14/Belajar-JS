@@ -75,3 +75,59 @@ body {
     background-color: #007F7F;
   }
   
+  .history {
+    margin-top: 20px;
+    background-color: #222831;
+    padding: 10px;
+    border-radius: 5px;
+    color: #EEEEEE;
+    font-size: 0.9em;
+    max-height: 150px;
+    overflow-y: auto;
+  }
+  
+  .history h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    color: #00ADB5;
+  }
+  
+  .history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .history li {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #393E46;
+    padding-bottom: 5px;
+  }
+  
+  .history li:last-child {
+    border-bottom: none;
+  }
+
+  .clear-history {
+    margin-top: 10px;
+    background-color: #F05454;
+    color: #EEEEEE;
+    padding: 10px;
+    width: 100%;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .clear-history:hover {
+    background-color: #D43A3A;
+  }
+
+  .clear-history:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
