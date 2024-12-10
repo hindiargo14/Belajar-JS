@@ -40,30 +40,26 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   
-    // Fungsi menambahkan riwayat
     function addToHistory(entry) {
       const li = document.createElement("li");
       li.textContent = entry;
-      historyList.prepend(li); // Tambahkan ke atas daftar
-      updateClearHistoryButton(); // Perbarui tombol Clear History
+      historyList.prepend(li);
+      updateClearHistoryButton();
     }
   
-    // Event listener untuk tombol Clear History
     clearHistoryButton.addEventListener("click", () => {
-      historyList.innerHTML = ""; // Kosongkan isi daftar
-      updateClearHistoryButton(); // Perbarui tombol Clear History
+      historyList.innerHTML = "";
+      updateClearHistoryButton();
     });
   
-    // Fungsi untuk memperbarui status tombol Clear History
     function updateClearHistoryButton() {
       if (historyList.children.length === 0) {
-        clearHistoryButton.disabled = true; // Nonaktifkan tombol jika tidak ada riwayat
+        clearHistoryButton.disabled = true;
       } else {
-        clearHistoryButton.disabled = false; // Aktifkan tombol jika ada riwayat
+        clearHistoryButton.disabled = false;
       }
     }
   
-    // Inisialisasi awal tombol Clear History
     updateClearHistoryButton();
   });
   
