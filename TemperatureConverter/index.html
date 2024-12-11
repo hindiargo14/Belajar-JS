@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Temperature Converter</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="live-temperature">
+        <label for="citySelect">Select City: </label>
+        <select id="citySelect">
+            <option value="Batam">Batam</option>
+            <option value="Bandung">Bandung</option>
+            <option value="Jakarta">Jakarta</option>
+            <option value="Jayapura">Jayapura</option>
+            <option value="Maluku">Maluku</option>
+        </select>
+        <div id="liveTemperature">Loading...</div>
+    </div>
+    <div class="container">
+        <h1>Live Temperature Converter</h1>
+        <input type="number" id="inputValue" placeholder="Enter value" />
+        <select id="inputUnit">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select>
+        <div class="output" id="output">
+            Converted Values:<br>
+            Celsius: <span id="celsiusValue">0</span>°C<br>
+            Fahrenheit: <span id="fahrenheitValue">0</span>°F<br>
+            Kelvin: <span id="kelvinValue">0</span>K
+        </div>
+    </div>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
