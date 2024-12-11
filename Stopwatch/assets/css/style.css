@@ -1,0 +1,86 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #00adb5, #222831);
+    margin: 0;
+}
+
+.stopwatch-container {
+    text-align: center;
+    background-color: #393e46;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.stopwatch-container:hover {
+    transform: scale(1.05);
+}
+
+#timeDisplay {
+    font-size: 4em;
+    color: #eeeeee;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#lapTimes {
+    color: #eeeeee;
+    margin-top: 20px;
+    text-align: left;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    margin: 10px 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:disabled {
+    background-color: #777;
+    cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+    background-color: #00adb5;
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3);
+}
+
+button#startButton {
+    background-color: #00adb5;
+    color: #222831;
+}
+
+button#stopButton {
+    background-color: #f44336;
+    color: #fff;
+}
+
+button#lapButton {
+    background-color: #ff9800;
+    color: #fff;
+}
+
+button#resetButton {
+    background-color: #222831;
+    color: #eeeeee;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none;
+}
