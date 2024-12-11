@@ -3,10 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const addTaskButton = document.getElementById('addTaskButton');
     const taskList = document.getElementById('taskList');
 
-    // Load saved tasks
     loadTasks();
 
-    // Tambahkan tugas
     addTaskButton.addEventListener('click', () => {
         const taskText = taskInput.value.trim();
 
@@ -15,42 +13,37 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        addTask(taskText, false); // Tambah tugas baru (belum selesai)
-        taskInput.value = ''; // Kosongkan input
-        saveTasks(); // Simpan data tugas
+        addTask(taskText, false);
+        taskInput.value = '';
+        saveTasks();
     });
 
     function addTask(text, isCompleted) {
         const listItem = document.createElement('li');
 
-        // Checkbox untuk menandai selesai
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = isCompleted;
         checkbox.addEventListener('change', () => {
-            listItem.classList.toggle('completed', checkbox.checked); // Toggle kelas selesai
-            saveTasks(); // Simpan perubahan
+            listItem.classList.toggle('completed', checkbox.checked);
+            saveTasks();
         });
 
-        // Teks tugas
         const taskText = document.createElement('span');
         taskText.textContent = text;
 
-        // Tombol hapus
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.classList.add('delete-button');
         deleteButton.addEventListener('click', () => {
-            taskList.removeChild(listItem); // Hapus tugas
-            saveTasks(); // Simpan perubahan
+            taskList.removeChild(listItem);
+            saveTasks();
         });
 
-        // Susun elemen dalam item tugas
         listItem.appendChild(checkbox);
         listItem.appendChild(taskText);
         listItem.appendChild(deleteButton);
 
-        // Tambahkan ke daftar tugas
         taskList.appendChild(listItem);
     }
 
@@ -72,14 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const lastSavedDate = localStorage.getItem('lastSavedDate');
         const today = new Date().toDateString();
 
-        // Jika hari baru, hapus tugas yang selesai
         if (lastSavedDate !== today) {
             const remainingTasks = savedTasks.filter((task) => !task.completed);
             localStorage.setItem('tasks', JSON.stringify(remainingTasks));
             localStorage.setItem('lastSavedDate', today);
         }
 
-        // Muat tugas dari localStorage
         const tasksToLoad = JSON.parse(localStorage.getItem('tasks')) || [];
         tasksToLoad.forEach((task) => {
             addTask(task.text, task.completed);
