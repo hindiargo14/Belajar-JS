@@ -11,48 +11,134 @@ body {
     color: #eeeeee;
     padding: 1rem;
   }
-  
-  .upload-section {
-    text-align: center;
-    margin: 20px 0;
+
+  .form-style {
+    display: flex;
+    align-items: flex-start; /* Pastikan form dan preview sejajar */
+    gap: 20px; /* Jarak antara form dan preview */
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Batas lebar form */
+    margin: 20px auto; /* Form di tengah halaman */
   }
   
-  .upload-section form {
+  .form-style label {
     display: inline-block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #222831;
+    cursor: pointer;
   }
+  
+  .form-style input[type="file"] {
+    display: none; /* Sembunyikan input file asli */
+  }
+  
+  .form-style label {
+    background-color: #00ADB5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-style label:hover {
+    background-color: #028a91;
+  }
+  
+  .form-style button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #393E46;
+    color: #EEEEEE;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .form-style button:hover {
+    background-color: #222831;
+    transform: scale(1.05);
+  }
+  
+  .preview-container {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #00ADB5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #f8f9fa;
+  }
+  
+  .preview-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Menjaga proporsi gambar */
+    display: none; /* Sembunyikan gambar default */
+  }    
   
   .gallery-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Minimum ukuran card */
+    gap: 20px; /* Jarak antar-card */
+    padding: 20px;
   }
   
   .gallery-item {
     position: relative;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan untuk efek card */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi saat hover */
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-10px); /* Mengangkat card saat di-hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Bayangan lebih besar saat hover */
   }
   
   .gallery-item img {
     width: 100%;
-    border-radius: 8px;
+    height: 100%;
+    aspect-ratio: 4 / 3; /* Proporsi gambar tetap (landscape default) */
+    object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: transform 0.3s ease-in-out; /* Animasi zoom saat hover */
   }
   
-  .delete-form {
+  .gallery-item:hover img {
+    transform: scale(1.05); /* Gambar membesar sedikit saat hover */
+  }
+  
+  .gallery-item .delete-form {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
   }
   
-  button {
-    background: #00adb5;
+  .gallery-item .delete-form button {
+    background: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
     padding: 5px 10px;
+    font-size: 12px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.2s ease;
   }
   
-  button:hover {
-    background: #393e46;
+  .gallery-item .delete-form button:hover {
+    background: rgba(0, 0, 0, 0.8);
   }
   

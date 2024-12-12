@@ -1,43 +1,37 @@
-// Elemen form upload dan file input
-const uploadForm = document.querySelector('form[action="upload.php"]');
-const fileInput = uploadForm.querySelector('input[type="file"]');
+document.addEventListener('DOMContentLoaded', function() {
+  // Elemen form upload dan file input
+  const uploadForm = document.querySelector('form[action="upload.php"]');
+  const fileInput = uploadForm.querySelector('input[type="file"]');
+  const previewContainer = document.getElementById('preview-container'); // Menyimpan elemen preview container
+  const previewImgElem = document.getElementById('preview-image'); // Mengubah nama elemen DOM untuk menghindari bentrok
 
-// Preview gambar sebelum upload
-fileInput.addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
+  // Fungsi untuk melihat preview gambar
+  function previewImage(event) {
+    const file = event.target.files[0]; // Ambil file dari input
 
-    reader.onload = (e) => {
-      // Membuat elemen preview
-      const preview = document.createElement('img');
-      preview.src = e.target.result;
-      preview.alt = 'Preview Gambar';
-      preview.style.maxWidth = '200px';
-      preview.style.marginTop = '10px';
-
-      // Hapus preview sebelumnya (jika ada)
-      const existingPreview = uploadForm.querySelector('img');
-      if (existingPreview) {
-        uploadForm.removeChild(existingPreview);
-      }
-
-      // Tambahkan preview baru
-      uploadForm.appendChild(preview);
-    };
-
-    reader.readAsDataURL(file);
-  }
-});
-
-// Konfirmasi sebelum menghapus gambar
-const deleteForms = document.querySelectorAll('.delete-form');
-
-deleteForms.forEach((form) => {
-  form.addEventListener('submit', (event) => {
-    const confirmed = confirm('Apakah Anda yakin ingin menghapus foto ini?');
-    if (!confirmed) {
-      event.preventDefault(); // Batalkan penghapusan jika tidak yakin
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImgElem.src = e.target.result; // Set src dari preview image
+        previewImgElem.style.display = 'block'; // Tampilkan gambar
+      };
+      reader.readAsDataURL(file); // Membaca file sebagai data URL
+    } else {
+      previewImgElem.style.display = 'none'; // Sembunyikan gambar jika tidak ada file
     }
+  }
+
+  // Tambahkan event listener untuk file input
+  fileInput.addEventListener('change', previewImage);
+
+  // Konfirmasi sebelum menghapus gambar
+  const deleteForms = document.querySelectorAll('.delete-form');
+  deleteForms.forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      const confirmed = confirm('Apakah Anda yakin ingin menghapus foto ini?');
+      if (!confirmed) {
+        event.preventDefault(); // Batalkan penghapusan jika tidak yakin
+      }
+    });
   });
 });
