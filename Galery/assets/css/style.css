@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #eeeeee;
+  }
+  
+  header {
+    text-align: center;
+    background: #222831;
+    color: #eeeeee;
+    padding: 1rem;
+  }
+  
+  .upload-section {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .upload-section form {
+    display: inline-block;
+  }
+  
+  .gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .gallery-item {
+    position: relative;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .delete-form {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  
+  button {
+    background: #00adb5;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #393e46;
+  }
+  
