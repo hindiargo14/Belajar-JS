@@ -14,27 +14,36 @@ function displayBooks() {
     const books = getBooks();
     const bookList = document.getElementById('book-list');
     bookList.innerHTML = '';
-    
+
     books.forEach((book, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            ${book}
-            <button class="edit" onclick="editBook(${index})">Edit</button>
-            <button class="delete" onclick="deleteBook(${index})">Hapus</button>
+        const bookItem = document.createElement('div');
+        bookItem.className = 'book-item';
+
+        bookItem.innerHTML = `
+            <img src="${book.cover}" alt="Sampul Buku" class="book-cover">
+            <div class="book-info">
+                <span class="book-title">${book.title}</span>
+                <div class="actions">
+                    <button class="edit" onclick="editBook(${index})">Edit</button>
+                    <button class="delete" onclick="deleteBook(${index})">Hapus</button>
+                </div>
+            </div>
         `;
-        bookList.appendChild(li);
+        bookList.appendChild(bookItem);
     });
 }
 
 // Function to add a book
 document.getElementById('add-book').addEventListener('click', function() {
     const bookTitle = document.getElementById('book-title').value.trim();
-    
-    if (bookTitle) {
+    const bookCover = document.getElementById('book-cover').value.trim();
+
+    if (bookTitle && bookCover) {
         const books = getBooks();
-        books.push(bookTitle);
+        books.push({ title: bookTitle, cover: bookCover });
         saveBooks(books);
         document.getElementById('book-title').value = '';
+        document.getElementById('book-cover').value = '';
         displayBooks();
     }
 });
@@ -49,10 +58,12 @@ function deleteBook(index) {
 
 // Function to edit a book
 function editBook(index) {
-    const newTitle = prompt('Edit judul buku:', getBooks()[index]);
-    if (newTitle) {
-        const books = getBooks();
-        books[index] = newTitle;
+    const books = getBooks();
+    const newTitle = prompt('Edit Judul Buku:', books[index].title);
+    const newCover = prompt('Edit URL Sampul Buku:', books[index].cover);
+
+    if (newTitle && newCover) {
+        books[index] = { title: newTitle, cover: newCover };
         saveBooks(books);
         displayBooks();
     }
