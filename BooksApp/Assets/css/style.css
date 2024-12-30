@@ -1,17 +1,33 @@
 /* General Styling */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+    background: url('https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay for better contrast */
+    backdrop-filter: blur(8px); /* Blurry effect */
+    z-index: 1;
 }
 
 .container {
-    background: #fff;
+    position: relative;
+    z-index: 2;
+    background: #ffffffc7; /* Semi-transparent white background */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,18 +42,15 @@ h1 {
     font-size: 24px;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-input {
+.form-container input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+}
+
+.form-container input:not(:last-child) {
+    margin-bottom: 10px;
 }
 
 button {
@@ -69,6 +82,14 @@ button:hover {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-item .book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+    color: #555;
 }
 
 .book-cover {
