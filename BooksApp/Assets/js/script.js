@@ -35,6 +35,9 @@ function displayBooks() {
         `;
         bookList.appendChild(bookItem);
     });
+
+    // Hide loading animation after displaying books
+    document.getElementById('loading-container').style.display = 'none';
 }
 
 // Function to add a book
@@ -46,24 +49,30 @@ document.getElementById('add-book').addEventListener('click', function () {
     const bookCover = document.getElementById('book-cover').value.trim();
 
     if (bookTitle && bookAuthor && bookPublisher && bookYear && bookCover) {
-        const books = getBooks();
-        books.push({
-            title: bookTitle,
-            author: bookAuthor,
-            publisher: bookPublisher,
-            year: bookYear,
-            cover: bookCover,
-        });
-        saveBooks(books);
+        // Show loading animation
+        document.getElementById('loading-container').style.display = 'flex';
 
-        // Clear form inputs
-        document.getElementById('book-title').value = '';
-        document.getElementById('book-author').value = '';
-        document.getElementById('book-publisher').value = '';
-        document.getElementById('book-year').value = '';
-        document.getElementById('book-cover').value = '';
+        // Simulate data processing delay
+        setTimeout(() => {
+            const books = getBooks();
+            books.push({
+                title: bookTitle,
+                author: bookAuthor,
+                publisher: bookPublisher,
+                year: bookYear,
+                cover: bookCover,
+            });
+            saveBooks(books);
 
-        displayBooks();
+            // Clear form inputs
+            document.getElementById('book-title').value = '';
+            document.getElementById('book-author').value = '';
+            document.getElementById('book-publisher').value = '';
+            document.getElementById('book-year').value = '';
+            document.getElementById('book-cover').value = '';
+
+            displayBooks();
+        }, 2000); // Simulate a 2-second delay
     } else {
         alert('Mohon isi semua data buku!');
     }
