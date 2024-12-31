@@ -123,10 +123,6 @@ button:hover {
     transition: background-color 0.3s;
 }
 
-.actions button.edit {
-    background-color: #00b3b3;
-}
-
 .actions button:hover {
     opacity: 0.8;
 }
