@@ -27,15 +27,11 @@
   
   .filter-section {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-    padding: 1rem;
+    margin: 1rem 0;
   }
   
-  input, select, button {
+  input, button {
     padding: 0.8rem;
     font-size: 1rem;
     border: 1px solid #DDD;
@@ -43,9 +39,8 @@
     outline: none;
   }
   
-  input, select {
-    width: 100%;
-    max-width: 300px;
+  input {
+    width: 250px;
   }
   
   button {
@@ -71,15 +66,9 @@
     background-color: #FFFFFF;
     border: 1px solid #DDD;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .product-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
   .product-item h3 {
@@ -93,57 +82,7 @@
     margin-bottom: 1rem;
   }
   
-  .product-item button {
-    display: inline-block;
-    margin: 0.3rem 0.2rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .product-item button:active {
-    transform: scale(0.95);
-  }
-  
-  /* Warna Khusus untuk Setiap Tombol */
-  .product-item button:nth-child(1) { /* Edit */
-    background-color: #00ADB5;
-    color: #FFFFFF;
-  }
-  
-  .product-item button:nth-child(1):hover {
-    background-color: #007F85;
-  }
-  
-  .product-item button:nth-child(2) { /* Hapus */
-    background-color: #FF5722;
-    color: #FFFFFF;
-  }
-  
-  .product-item button:nth-child(2):hover {
-    background-color: #E64A19;
-  }
-  
-  .product-item button:nth-child(3) { /* Beli */
-    background-color: #4CAF50;
-    color: #FFFFFF;
-  }
-  
-  .product-item button:nth-child(3):hover {
-    background-color: #388E3C;
-  }
-  
-  /* Responsivitas untuk Tombol */
-  @media (max-width: 480px) {
-    .product-item button {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
-    }
-  }  
-  
+  /* Modal */
   .modal {
     position: fixed;
     top: 0;
@@ -184,13 +123,6 @@
     border: 1px solid #DDD;
     border-radius: 5px;
   }
-
-  .button-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }  
   
   .modal-content button {
     width: 48%;
@@ -207,17 +139,79 @@
     color: #FFFFFF;
   }
   
-  .modal-content button#saveProductButton:hover {
-    background-color: #007F85;
-  }
-  
   .modal-content button#cancelButton {
     background-color: #FF5722;
     color: #FFFFFF;
   }
   
-  .modal-content button#cancelButton:hover {
+  .no-product {
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 768px) {
+    .filter-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .product-item {
+      padding: 1rem;
+    }
+  }
+
+  /* Tombol */
+.product-item button {
+    display: inline-block;
+    margin: 0.3rem 0.2rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .product-item button:active {
+    transform: scale(0.95);
+  }
+  
+  .product-item button:nth-child(1) { /* Edit */
+    background-color: #00ADB5;
+    color: #FFFFFF;
+  }
+  
+  .product-item button:nth-child(1):hover {
+    background-color: #007F85;
+  }
+  
+  .product-item button:nth-child(2) { /* Hapus */
+    background-color: #FF5722;
+    color: #FFFFFF;
+  }
+  
+  .product-item button:nth-child(2):hover {
     background-color: #E64A19;
+  }
+  
+  .product-item button:nth-child(3) { /* Beli */
+    background-color: #4CAF50;
+    color: #FFFFFF;
+  }
+  
+  .product-item button:nth-child(3):hover {
+    background-color: #388E3C;
+  }
+  
+  /* Responsivitas untuk Tombol */
+  @media (max-width: 480px) {
+    .product-item button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
   }
   
   /* Pesan Produk Kosong */
@@ -227,42 +221,5 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-top: 2rem;
-  }
-  
-  /* Responsivitas */
-  @media (max-width: 768px) {
-    header {
-      padding: 0.8rem;
-    }
-  
-    h1 {
-      font-size: 1.8rem;
-    }
-  
-    .filter-section {
-      flex-direction: column;
-    }
-  
-    .product-item {
-      padding: 1rem 0.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 1.5rem;
-    }
-  
-    .product-item h3 {
-      font-size: 1rem;
-    }
-  
-    .product-item p {
-      font-size: 0.8rem;
-    }
-  
-    button {
-      font-size: 0.8rem;
-    }
   }
   
