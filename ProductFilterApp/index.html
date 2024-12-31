@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filter Produk dengan CRUD</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Daftar Produk</h1>
+  </header>
+
+  <section class="filter-section">
+    <input type="text" id="searchInput" placeholder="Cari produk berdasarkan nama...">
+    <select id="categoryFilter">
+      <option value="all">Semua Kategori</option>
+      <option value="elektronik">Elektronik</option>
+      <option value="fashion">Fashion</option>
+      <option value="makanan">Makanan</option>
+    </select>
+    <button id="addProductButton">Tambah Produk</button>
+  </section>
+
+  <section class="product-list" id="productList">
+    <!-- Produk akan dirender di sini -->
+  </section>
+
+  <!-- Modal untuk Tambah/Edit Produk -->
+  <div id="productModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modalTitle">Tambah Produk</h2>
+      <label for="productName">Nama Produk:</label>
+      <input type="text" id="productName" placeholder="Masukkan nama produk...">
+      <label for="productCategory">Kategori:</label>
+      <select id="productCategory">
+        <option value="elektronik">Elektronik</option>
+        <option value="fashion">Fashion</option>
+        <option value="makanan">Makanan</option>
+      </select>
+      <button id="saveProductButton">Simpan</button>
+      <button id="cancelButton">Batal</button>
+    </div>
+  </div>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
